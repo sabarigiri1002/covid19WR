@@ -6,7 +6,8 @@ import apiCalls from '../../../config/apiCalls';
 import { numberWithCommas } from './../../../config/helpers';
 
 import CountryDetails from './../../template/CountryDetails';
-import LineChartComponent from './../../organism/LineChartComponent'
+import LineChartComponent from './../../organism/LineChartComponent';
+import SmallTextDangerComponent from './../../atom/SmallTextDangerComponent'
 
 import "./index.css";
 
@@ -15,65 +16,89 @@ export default class FullDetailsScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentAllCountryStatus: null,
-            countryStatus: null
+            currentAllCountryReport: null,
+            countryReport: null,
+            worldReport: null
         };
     }
 
     componentDidMount() {
         apiCalls.getAllCountreyReport()
-            .then(currentAllCountryStatusData => {
+            .then(currentAllCountryReportData => {
+                // const worldStatuData = currentAllCountryReportData[0];
+                // delete currentAllCountryReportData[0];
+                // this.setState({
+                //     currentAllCountryReport: currentAllCountryReportData,
+                //     worldReport: worldStatuData
+                // })
+                // this.getCountreyReportByName(currentAllCountryReportData[1].country);
+                // const worldStatuData = currentAllCountryReportData[0];
+                // delete currentAllCountryReportData[0];
                 this.setState({
-                    currentAllCountryStatus: currentAllCountryStatusData
+                    currentAllCountryReport: currentAllCountryReportData
                 })
+                this.getCountreyReportByName(currentAllCountryReportData[0].country);
             });
     }
     getCountreyReportByName(country) {
         apiCalls.getCountreyReportByName(country)
-            .then(countryStatusData => {
+            .then(countryReportData => {
                 this.setState({
-                    countryStatus: countryStatusData
+                    countryReport: countryReportData
                 })
             });
     }
 
     render() {
-        const currentAllCountryStatus = this.state.currentAllCountryStatus;
-        const countryStatus = this.state.countryStatus;
+        const { currentAllCountryReport, countryReport, worldReport } = this.state;
         return (
             <div className="row">
                 <div className="col-lg-12">
                     <div className="row">
-                        <div className="col-lg-1">
+                        <div className="col-lg-12">
                             <a href="/" className="btn btn-sm btn-link"> Back</a>
-                        </div>
-                    </div>
-                    <br />
-
-                    <div className="row">
-                        <div className="col-lg-12 text-left">
-                            <h5>Global Status</h5>
+                            <br />
+                            <h5>Global Report</h5>
                         </div>
                     </div>
                     {
-                        currentAllCountryStatus ?
+                        currentAllCountryReport ?
 
                             <div className="row">
                                 <div className="col-lg-6 table-responsive table-verticalScroll">
-                                    <table id="datatable" className="table table-hover table-striped table-bordered country-table">
+                                    <table id="datatable" className="table table-hover table-striped table-bordered country-table table-fixed">
                                         <thead>
                                             <tr>
                                                 <th className="text-left">Country</th>
                                                 <th className="text-center">Flag</th>
-                                                <th className="text-right text-danger">Total</th>
-                                                <th className="text-right text-success">Recovered</th>
-                                                <th className="text-right text-info">Active</th>
+                                                <th className="text-right text-danger">
+                                                    (<span class="oi oi-arrow-top small"></span>) Total <span class="oi oi-sort-descending small"></span>
+                                                    {/* <br />
+                                                    <small>(+{numberWithCommas(worldReport.todayCases)}) </small>
+                                                    {numberWithCommas(worldReport.cases)} */}
+                                                </th>
+                                                <th className="text-right text-success">
+                                                    Recovered
+                                                    {/* <br />
+                                                    {numberWithCommas(worldReport.recovered)} */}
+                                                </th>
+                                                <th className="text-right text-info">
+                                                    Active
+                                                    {/* <br />
+                                                    {numberWithCommas(worldReport.active)} */}
+                                                </th>
+                                                <th className="text-right text-dark">
+                                                    (<span class="oi oi-arrow-top small"></span>) Deaths
+                                                    {/* <br />
+                                                    <small className="text-danger ">(+{numberWithCommas(worldReport.todayDeaths)}) </small>
+                                                    {numberWithCommas(worldReport.deaths)} */}
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {
-                                                currentAllCountryStatus.map((countryData, index) => {
-                                                    const { country, countryInfo,
+                                                currentAllCountryReport.map((countryData, index) => {
+                                                    const { country, countryInfo, deaths, todayDeaths,
                                                         cases, todayCases,
                                                         recovered, active } = countryData
                                                     return (
@@ -85,11 +110,15 @@ export default class FullDetailsScreen extends Component {
                                                             </td>
                                                             <td className="text-center"><img src={`${countryInfo.flag}`} width="20"></img></td>
                                                             <td className="text-right">
-                                                                <small className="text-danger ">(+{numberWithCommas(todayCases)}) </small>
+                                                                <SmallTextDangerComponent >{numberWithCommas(todayCases)} </SmallTextDangerComponent>
                                                                 {numberWithCommas(cases)}
                                                             </td>
                                                             <td className="text-right">{numberWithCommas(recovered)}</td>
                                                             <td className="text-right">{numberWithCommas(active)}</td>
+                                                            <td className="text-right">
+                                                                <SmallTextDangerComponent >{numberWithCommas(todayDeaths)} </SmallTextDangerComponent>
+                                                                {numberWithCommas(deaths)}
+                                                            </td>
                                                         </tr>
                                                     )
                                                 })
@@ -99,16 +128,17 @@ export default class FullDetailsScreen extends Component {
                                 </div>
                                 <div className="col-lg-6">
                                     {
-                                        countryStatus ?
+                                        countryReport ?
                                             <React.Fragment>
                                                 <div className="row">
                                                     <div className="col-lg-12">
-                                                        <LineChartComponent />
+                                                        <CountryDetails countryReport={countryReport} />
                                                     </div>
                                                 </div>
                                                 <div className="row">
                                                     <div className="col-lg-12">
-                                                        <CountryDetails countryStatus={countryStatus} />
+                                                        <LineChartComponent countryName={countryReport.country} />
+
                                                     </div>
                                                 </div>
                                             </React.Fragment>

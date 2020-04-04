@@ -6,4 +6,6 @@
 
 .table.country-table td, .table.country-table th{
     padding: .45rem !important;
+    vertical-align: text-top;
+    font-size: 0.85rem;
   }
