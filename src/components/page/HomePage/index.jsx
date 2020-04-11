@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
+
 
 import apiCalls from '../../../config/apiCalls';
 import CountryDetails from '../../template/CountryDetails';
 import { numberWithCommas } from './../../../config/helpers';
 
-import LineChartComponent from './../../organism/LineChartComponent';
 import BarChartComponent from './../../organism/BarChartComponent';
 
 
@@ -23,9 +22,9 @@ export default class HomePage extends Component {
     componentDidMount() {
         apiCalls.getConsolidatedReport()
             .then(currentGlobalReportData => {
-                apiCalls.getAllCountreyReport()
+                apiCalls.getTopAffectedCountreyReport()
                     .then(countryReport => {
-                        const IndiaReport = countryReport.filter((value) => value.country == "India");
+                        const IndiaReport = countryReport.filter((value) => value.country === "India");
                         this.setState({
                             currentGlobalReport: currentGlobalReportData,
                             countryReport: IndiaReport[0],
@@ -93,7 +92,7 @@ export default class HomePage extends Component {
 
                             </div>
                         </div>
-                        <div className="col-lg-6 col-sm-12">
+                        <div className="col-lg-6 col-sm-12 d-sm-none d-md-block">
                             {
                                 globalReport.length > 0 ? <BarChartComponent globalReport={globalReport} /> : ""
                             }

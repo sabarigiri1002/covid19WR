@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-
 
 import SmallTextDangerComponent from './../../atom/SmallTextDangerComponent';
 
@@ -9,10 +7,7 @@ import { numberWithCommas } from './../../../config/helpers';
 
 
 export default class CountryDetails extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
-
+    
     render() {
         const countryReport = this.props.countryReport;
         return (
@@ -20,11 +15,11 @@ export default class CountryDetails extends Component {
                 <div className="col-lg-12">
                     <div className="row">
                         <div className="col-lg-10 text-left">
-                            <h5>Report details for {countryReport.country }  &nbsp;
+                            <h5>Report details for {countryReport.country}  &nbsp;
                             {
-                                countryReport.countryInfo ?
-                                    <img src={`${countryReport.countryInfo.flag}`} alt={countryReport.country} width="30"></img> : ""
-                            }</h5>
+                                    countryReport.countryInfo ?
+                                        <img src={`${countryReport.countryInfo.flag}`} alt={countryReport.country} width="30"></img> : ""
+                                }</h5>
                         </div>
                     </div>
                     <div className="row">
@@ -33,7 +28,9 @@ export default class CountryDetails extends Component {
                                 <div class="card-body">
                                     <p class="card-text">Total reported cases</p>
                                     <h5 className="text-info">
-                                        <SmallTextDangerComponent>{numberWithCommas(countryReport.todayCases)}</SmallTextDangerComponent>
+                                        {countryReport.todayCases ?
+                                            <SmallTextDangerComponent >{numberWithCommas(countryReport.todayCases)} </SmallTextDangerComponent> : ""
+                                        }
                                         {numberWithCommas(countryReport.cases)}
                                     </h5>
                                 </div>
@@ -68,7 +65,9 @@ export default class CountryDetails extends Component {
                                 <div class="card-body">
                                     <p class="card-text">Total deaths cases</p>
                                     <h5 className="text-danger">
-                                        <SmallTextDangerComponent>{numberWithCommas(countryReport.todayDeaths)}</SmallTextDangerComponent>
+                                        {countryReport.todayDeaths ?
+                                            <SmallTextDangerComponent >{numberWithCommas(countryReport.todayDeaths)} </SmallTextDangerComponent> : ""
+                                        }
                                         {numberWithCommas(countryReport.deaths)}</h5>
                                 </div>
                             </div>

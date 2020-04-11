@@ -1,11 +1,11 @@
-.table-verticalScroll { 
+.table-verticalScroll {
     max-height: 78vh;
     overflow-y: auto;
 }
 
-
-.table.country-table td, .table.country-table th{
+.table.country-table td, .table.country-table th {
     padding: .45rem !important;
     vertical-align: text-top;
     font-size: 0.85rem;
-  }
+    z-index: 100;
+}

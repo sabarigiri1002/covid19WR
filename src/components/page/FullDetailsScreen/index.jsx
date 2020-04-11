@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-
 
 import apiCalls from '../../../config/apiCalls';
 import { numberWithCommas } from './../../../config/helpers';
@@ -18,7 +16,6 @@ export default class FullDetailsScreen extends Component {
         this.state = {
             currentAllCountryReport: null,
             countryReport: null,
-            worldReport: null
         };
     }
 
@@ -50,7 +47,7 @@ export default class FullDetailsScreen extends Component {
     }
 
     render() {
-        const { currentAllCountryReport, countryReport, worldReport } = this.state;
+        const { currentAllCountryReport, countryReport } = this.state;
         return (
             <div className="row">
                 <div className="col-lg-12">
@@ -108,15 +105,19 @@ export default class FullDetailsScreen extends Component {
                                                                     {country}
                                                                 </button>
                                                             </td>
-                                                            <td className="text-center"><img src={`${countryInfo.flag}`} width="20"></img></td>
+                                                            <td className="text-center"><img src={`${countryInfo.flag}`} alt={`${countryInfo.flag}`} width="20"></img></td>
                                                             <td className="text-right">
-                                                                <SmallTextDangerComponent >{numberWithCommas(todayCases)} </SmallTextDangerComponent>
+                                                                {todayCases ?
+                                                                    <SmallTextDangerComponent >{numberWithCommas(todayCases)} </SmallTextDangerComponent> : ""
+                                                                }
                                                                 {numberWithCommas(cases)}
                                                             </td>
                                                             <td className="text-right">{numberWithCommas(recovered)}</td>
                                                             <td className="text-right">{numberWithCommas(active)}</td>
                                                             <td className="text-right">
-                                                                <SmallTextDangerComponent >{numberWithCommas(todayDeaths)} </SmallTextDangerComponent>
+                                                                {todayCases ?
+                                                                    <SmallTextDangerComponent >{numberWithCommas(todayDeaths)} </SmallTextDangerComponent> : ""
+                                                                }
                                                                 {numberWithCommas(deaths)}
                                                             </td>
                                                         </tr>
@@ -135,7 +136,7 @@ export default class FullDetailsScreen extends Component {
                                                         <CountryDetails countryReport={countryReport} />
                                                     </div>
                                                 </div>
-                                                <div className="row">
+                                                <div className="row d-sm-none d-md-block">
                                                     <div className="col-lg-12">
                                                         <LineChartComponent countryName={countryReport.country} />
 

@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-import apiCalls from '../../../config/apiCalls';
-
 export default class BarChartComponent extends Component {
     constructor(props) {
         super(props);

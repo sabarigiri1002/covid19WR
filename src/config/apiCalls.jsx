@@ -14,6 +14,9 @@ const apiCalls = {
     },
     
     getAllCountreyReport() {
+        return this.doGETCall(GET_COUNTRY_REPOR_BY_NAME.concat('?sort=cases'));
+    },
+    getTopAffectedCountreyReport() {
         return this.doGETCall(GET_COUNTRY_REPOR_BY_NAME.concat('?sort=active'));
     },
     
