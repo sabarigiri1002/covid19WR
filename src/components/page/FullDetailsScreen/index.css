@@ -1,5 +1,5 @@
 .table-verticalScroll {
-    max-height: 84vh;
+    max-height: 84vh !important;
     overflow-y: auto;
 }
 
@@ -19,5 +19,5 @@ input:focus {
     box-shadow: none !important;
 }
 .mainSection{
-    margin-top: -50px;
+    margin-top: -40px;
 }

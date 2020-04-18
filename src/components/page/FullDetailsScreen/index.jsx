@@ -26,7 +26,7 @@ export default class FullDetailsScreen extends Component {
             .then(currentAllCountryReportData => {
                 this.setState({
                     currentAllCountryReport: currentAllCountryReportData,
-                    backUpdata : currentAllCountryReportData
+                    backUpdata: currentAllCountryReportData
                 })
                 this.getCountreyReportByName(currentAllCountryReportData[0].country);
             });
@@ -41,7 +41,7 @@ export default class FullDetailsScreen extends Component {
     }
     searchFilterData(event) {
         let searchValue = event.target.value;
-        const {backUpdata} = this.state;
+        const { backUpdata } = this.state;
         let filteredData = backUpdata.filter((value) => {
             return value.country.toLowerCase().match(searchValue)
         });
@@ -79,25 +79,15 @@ export default class FullDetailsScreen extends Component {
                                                 <th className="text-center">Flag</th>
                                                 <th className="text-right text-danger">
                                                     (<span class="oi oi-arrow-top small"></span>) Total <span class="oi oi-sort-descending small"></span>
-                                                    {/* <br />
-                                                    <small>(+{numberWithCommas(worldReport.todayCases)}) </small>
-                                                    {numberWithCommas(worldReport.cases)} */}
                                                 </th>
                                                 <th className="text-right text-success">
                                                     Recovered
-                                                    {/* <br />
-                                                    {numberWithCommas(worldReport.recovered)} */}
                                                 </th>
                                                 <th className="text-right text-info">
                                                     Active
-                                                    {/* <br />
-                                                    {numberWithCommas(worldReport.active)} */}
                                                 </th>
                                                 <th className="text-right text-dark">
                                                     (<span class="oi oi-arrow-top small"></span>) Deaths
-                                                    {/* <br />
-                                                    <small className="text-danger ">(+{numberWithCommas(worldReport.todayDeaths)}) </small>
-                                                    {numberWithCommas(worldReport.deaths)} */}
                                                 </th>
                                             </tr>
                                         </thead>

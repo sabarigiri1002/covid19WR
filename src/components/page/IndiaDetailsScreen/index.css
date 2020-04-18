@@ -1,5 +1,5 @@
-.table-verticalScroll {
-    max-height: 84vh;
+.table-verticalScroll-Ind {
+    max-height: 80vh !important;
     overflow-y: auto;
 }
 

@@ -40,3 +40,7 @@ body::-webkit-scrollbar-thumb {
 
 /* Just common table stuff. Really. */
 th, td { padding: 8px 16px; }
+
+a.btn.btn-sm.btn-link{
+  padding-left: 0px;
+}
