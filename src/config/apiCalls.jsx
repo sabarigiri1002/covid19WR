@@ -1,10 +1,13 @@
 import axios from 'axios';
 
 
-const URL = "https://corona.lmao.ninja/";
-const GET_CONSOLIDATED_REPORT = URL.concat("all");
-const GET_COUNTRY_REPOR_BY_NAME = URL.concat("countries/");
-const URL_FOR_DAY_REPORT = URL.concat("v2/historical/");
+const URL_FOR_WORLD_REPORT = "https://corona.lmao.ninja/v2/";
+const GET_CONSOLIDATED_REPORT = URL_FOR_WORLD_REPORT.concat("all");
+const GET_COUNTRY_REPOR_BY_NAME = URL_FOR_WORLD_REPORT.concat("countries/");
+const URL_FOR_DAY_REPORT = URL_FOR_WORLD_REPORT.concat("historical/");
+
+const URL_FOR_INDIA_REPORT = "https://api.covid19india.org/";
+
 
 
 const apiCalls = {

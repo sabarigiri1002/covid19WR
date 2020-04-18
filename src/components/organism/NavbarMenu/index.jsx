@@ -13,9 +13,9 @@ export default class NavbarMenu extends Component {
                     <li class="nav-item">
                         <a class="nav-link" href="/fullDetailsScreen">Global Report</a>
                     </li>
-                    {/* <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="/viewIndiaDetailsScreen">India Report</a>
-                    </li> */}
+                    </li>
                 </ul>
                 {/* <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
 
 import apiCalls from '../../../config/apiCalls';
-import { numberWithCommas } from './../../../config/helpers';
+import { numberWithCommas } from '../../../config/helpers';
 
-import CountryDetails from './../../template/CountryDetails';
-import LineChartComponent from './../../organism/LineChartComponent';
-import SmallTextDangerComponent from './../../atom/SmallTextDangerComponent'
+import CountryDetails from '../../template/CountryDetails';
+import LineChartComponent from '../../organism/LineChartComponent';
+import SmallTextDangerComponent from '../../atom/SmallTextDangerComponent'
 
 import "./index.css";
 
 
-export default class FullDetailsScreen extends Component {
+export default class IndiaDetailsScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             currentAllCountryReport: null,
             countryReport: null,
-            searchTest: "",
-            backUpdata: null
         };
     }
 
@@ -25,8 +23,7 @@ export default class FullDetailsScreen extends Component {
         apiCalls.getAllCountreyReport()
             .then(currentAllCountryReportData => {
                 this.setState({
-                    currentAllCountryReport: currentAllCountryReportData,
-                    backUpdata : currentAllCountryReportData
+                    currentAllCountryReport: currentAllCountryReportData
                 })
                 this.getCountreyReportByName(currentAllCountryReportData[0].country);
             });
@@ -39,39 +36,24 @@ export default class FullDetailsScreen extends Component {
                 })
             });
     }
-    searchFilterData(event) {
-        let searchValue = event.target.value;
-        const {backUpdata} = this.state;
-        let filteredData = backUpdata.filter((value) => {
-            return value.country.toLowerCase().match(searchValue)
-        });
-        this.setState({
-            currentAllCountryReport: searchValue ? filteredData : backUpdata,
-            searchTest: searchValue
-        })
-    }
 
     render() {
-        const { currentAllCountryReport, countryReport, searchTest } = this.state;
+        const { currentAllCountryReport, countryReport } = this.state;
         return (
             <div className="row">
                 <div className="col-lg-12">
                     <div className="row">
-                        <div className="col-lg-4">
+                        <div className="col-lg-12">
                             <a href="/" className="btn btn-sm btn-link"> Back</a>
                             <br />
-                            <h5>Global Report</h5>
+                            <h5>India Report</h5>
                         </div>
-
                     </div>
                     {
                         currentAllCountryReport ?
 
-                            <div className="row mainSection">
+                            <div className="row">
                                 <div className="col-lg-6 table-responsive table-verticalScroll">
-                                    <div className="col-lg-6 form-group float-right">
-                                        <input className="form-control" placeholder="Search by Country" value={searchTest} onChange={this.searchFilterData.bind(this)} />
-                                    </div>
                                     <table id="datatable" className="table table-hover table-striped table-bordered country-table table-fixed">
                                         <thead>
                                             <tr>

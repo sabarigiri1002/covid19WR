@@ -9,15 +9,3 @@
     font-size: 0.85rem;
     z-index: 100;
 }
-
-input {
-    box-shadow: 1px 1px 5px #d0d0d0 !important;
-    margin-top: 2px;
-}
-
-input:focus {
-    box-shadow: none !important;
-}
-.mainSection{
-    margin-top: -50px;
-}
