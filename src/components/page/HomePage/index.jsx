@@ -85,10 +85,13 @@ export default class HomePage extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <br />
                             <div className="row">
-                                {
-                                    countryReport.country ? <CountryDetails countryReport={countryReport} /> : ""
-                                }
+                                <div className="col-lg-12">
+                                    {
+                                        countryReport.country ? <CountryDetails countryReport={countryReport} /> : ""
+                                    }
+                                </div>
 
                             </div>
                         </div>

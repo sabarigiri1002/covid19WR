@@ -72,7 +72,7 @@ export default class FullDetailsScreen extends Component {
                                     <div className="col-lg-6 form-group float-right">
                                         <input className="form-control" placeholder="Search by Country" value={searchTest} onChange={this.searchFilterData.bind(this)} />
                                     </div>
-                                    <table id="datatable" className="table table-hover table-striped table-bordered country-table table-fixed">
+                                    <table id="datatable" className="table table-hover table-striped table-borderless country-table table-fixed">
                                         <thead>
                                             <tr>
                                                 <th className="text-left">Country</th>

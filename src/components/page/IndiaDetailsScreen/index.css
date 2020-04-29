@@ -1,6 +1,7 @@
 .table-verticalScroll-Ind {
-    max-height: 80vh !important;
+    max-height: 84vh !important;
     overflow-y: auto;
+    margin-top: -40px;
 }
 
 .table.country-table td, .table.country-table th {

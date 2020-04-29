@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import Navbar from './../../organism/Navbar';
 
 import './style.css';
 
 export default class PageLayout extends Component {
-    static propTypes = {
-        prop: PropTypes
+    constructor(props){
+        super(props)
     }
-
     render() {
         return (
             <div>

@@ -7,7 +7,8 @@ const GET_COUNTRY_REPOR_BY_NAME = URL_FOR_WORLD_REPORT.concat("countries/");
 const URL_FOR_DAY_REPORT = URL_FOR_WORLD_REPORT.concat("historical/");
 
 const URL_FOR_INDIA_REPORT = "https://api.covid19india.org/";
-const GET_STATE_REPORT = URL_FOR_INDIA_REPORT.concat("data.json")
+const GET_STATE_REPORT = URL_FOR_INDIA_REPORT.concat("data.json");
+const GET_STATE_DETAILS_REPORT = URL_FOR_INDIA_REPORT.concat("v2/state_district_wise.json");
 
 
 
@@ -34,6 +35,9 @@ const apiCalls = {
 
     getAllIndiaStateDetails() {
         return this.doGETCall(GET_STATE_REPORT);
+    },
+    getAllIndiaDistrictDetails() {
+        return this.doGETCall(GET_STATE_DETAILS_REPORT);
     },
 
     doGETCall(REQUEST_URL) {

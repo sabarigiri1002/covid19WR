@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
 
 export default class NavbarMenu extends Component {
-    static propTypes = {
-        prop: PropTypes
+    constructor(props){
+        super(props)
     }
 
     render() {

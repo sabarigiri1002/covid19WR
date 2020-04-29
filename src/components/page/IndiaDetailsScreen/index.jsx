@@ -3,9 +3,8 @@ import React, { Component } from 'react'
 import apiCalls from '../../../config/apiCalls';
 import { numberWithCommas } from '../../../config/helpers';
 
-import CountryDetails from '../../template/CountryDetails';
-import LineChartComponent from '../../organism/LineChartComponent';
-import SmallTextDangerComponent from '../../atom/SmallTextDangerComponent'
+import SmallTextDangerComponent from '../../atom/SmallTextDangerComponent';
+import DistrictDetails from './../../template/DistrictDetails'
 
 import "./index.css";
 
@@ -14,9 +13,11 @@ export default class IndiaDetailsScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentAllStateReport: null,
+            currentAllStateReport: [],
             searchTest: "",
-            backUpdata : null
+            backUpdata: [],
+            allDistrictReport: [],
+            selectedStateDistrictReport: null
         };
     }
 
@@ -26,17 +27,19 @@ export default class IndiaDetailsScreen extends Component {
                 let stateWiseData = currentAllStateReportData.statewise
                 let backupData = stateWiseData
                 delete stateWiseData[0];
-                this.setState({
-                    currentAllStateReport: stateWiseData,
-                    backUpdata: backupData,
-                    stateDetails : null
-                })
-                //this.getCountreyReportByName(currentAllCountryReportData[0].country);
+                apiCalls.getAllIndiaDistrictDetails()
+                    .then(allDistrictReportData => {
+                        let selectedStateDistrictReportData = allDistrictReportData.filter(
+                            (value) => { return value.statecode === stateWiseData[1].statecode }
+                        )
+                        this.setState({
+                            currentAllStateReport: stateWiseData,
+                            backUpdata: backupData,
+                            allDistrictReport: allDistrictReportData,
+                            selectedStateDistrictReport: selectedStateDistrictReportData[0]
+                        });
+                    })
             });
-    }
-    getCountreyReportByName(stateName) {
-        let stateData = this.state.currentAllStateReport.filter((value)=>{ return value.state == stateName ? value : false });
-        console.log(stateData)
     }
     searchFilterData(event) {
         let searchValue = event.target.value;
@@ -49,9 +52,19 @@ export default class IndiaDetailsScreen extends Component {
             searchTest: searchValue
         })
     }
+    getStateDetailsReport(statecode) {
+        let selectedStateDistrictReportData = this.state.allDistrictReport.filter(
+            (value) => { return value.statecode === statecode }
+        );
+        console.log(selectedStateDistrictReportData)
+        this.setState({
+            selectedStateDistrictReport: selectedStateDistrictReportData[0]
+        });
+
+    }
 
     render() {
-        const { currentAllStateReport, searchTest } = this.state;
+        const { currentAllStateReport, searchTest, selectedStateDistrictReport } = this.state;
         return (
             <div className="row">
                 <div className="col-lg-12">
@@ -59,7 +72,7 @@ export default class IndiaDetailsScreen extends Component {
                         <div className="col-lg-4">
                             <a href="/" className="btn btn-sm btn-link"> Back</a>
                             <br />
-                            <h5>Global Report</h5>
+                            <h5>State Report</h5>
                         </div>
 
                     </div>
@@ -68,10 +81,10 @@ export default class IndiaDetailsScreen extends Component {
 
                             <div className="row">
                                 <div className="col-lg-6 table-responsive table-verticalScroll-Ind">
-                                    {/* <div className="col-lg-6 form-group float-right">
+                                    <div className="col-lg-6 form-group float-right">
                                         <input className="form-control" placeholder="Search by State" value={searchTest} onChange={this.searchFilterData.bind(this)} />
-                                    </div> */}
-                                    <table id="datatable" className="table table-hover table-striped table-bordered country-table table-fixed">
+                                    </div>
+                                    <table id="datatable" className="table table-hover table-striped table-borderless  country-table table-fixed">
                                         <thead>
                                             <tr>
                                                 <th className="text-left">State</th>
@@ -93,11 +106,11 @@ export default class IndiaDetailsScreen extends Component {
                                             {
                                                 currentAllStateReport.map((stateData, index) => {
                                                     const { state, active, confirmed, deaths,
-                                                        deltaconfirmed, deltadeaths, recovered } = stateData
+                                                        deltaconfirmed, deltadeaths, recovered, statecode } = stateData
                                                     return (
                                                         <tr key={index}>
                                                             <td className="text-left">
-                                                                <button className="btn-link btn-sm btn" onClick={this.getCountreyReportByName.bind(this, state)}>
+                                                                <button className="btn-link btn-sm btn" onClick={this.getStateDetailsReport.bind(this, statecode)}>
                                                                     {state}
                                                                 </button>
                                                             </td>
@@ -122,25 +135,13 @@ export default class IndiaDetailsScreen extends Component {
                                         </tbody>
                                     </table>
                                 </div>
-                                {/* <div className="col-lg-6">
+                                <div className="col-lg-6">
                                     {
-                                        countryReport ?
-                                            <React.Fragment>
-                                                <div className="row">
-                                                    <div className="col-lg-12">
-                                                        <CountryDetails countryReport={countryReport} />
-                                                    </div>
-                                                </div>
-                                                <div className="row d-sm-none d-md-block">
-                                                    <div className="col-lg-12">
-                                                        <LineChartComponent countryName={countryReport.country} />
-
-                                                    </div>
-                                                </div>
-                                            </React.Fragment>
+                                        selectedStateDistrictReport ?
+                                            <DistrictDetails selectedStateDistrictReport={selectedStateDistrictReport} />
                                             : ""
                                     }
-                                </div> */}
+                                </div>
                             </div> : ""
                     }
 
