@@ -6,6 +6,7 @@ import CountryDetails from '../../template/CountryDetails';
 import { numberWithCommas } from './../../../config/helpers';
 
 import BarChartComponent from './../../organism/BarChartComponent';
+import NavbarItemComponent from './../../atom/NavbarItemComponent'
 
 
 export default class HomePage extends Component {
@@ -53,33 +54,33 @@ export default class HomePage extends Component {
                         <div className="col-lg-6 col-sm-12">
                             <div className="row">
                                 <div className="col-lg-4">
-                                    <div class="card text-center border-light">
-                                        <div class="card-body">
-                                            <p class="card-text">Total reported cases</p>
+                                    <div className="card text-center border-light">
+                                        <div className="card-body">
+                                            <p className="card-text">Total reported cases</p>
                                             <h5 className="text-info">{numberWithCommas(currentGlobalReport.cases)}</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4">
-                                    <div class="card text-center border-light">
-                                        <div class="card-body">
-                                            <p class="card-text">Total recovered cases</p>
+                                    <div className="card text-center border-light">
+                                        <div className="card-body">
+                                            <p className="card-text">Total recovered cases</p>
                                             <h5 className="text-success">{numberWithCommas(currentGlobalReport.recovered)}</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4">
-                                    <div class="card text-center border-light">
-                                        <div class="card-body">
-                                            <p class="card-text">Total confirmed cases</p>
+                                    <div className="card text-center border-light">
+                                        <div className="card-body">
+                                            <p className="card-text">Total confirmed cases</p>
                                             <h5 className="text-active">{numberWithCommas(currentGlobalReport.active)}</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4 offset-md-4">
-                                    <div class="card text-center border-light">
-                                        <div class="card-body">
-                                            <p class="card-text">Total deaths cases</p>
+                                    <div className="card text-center border-light">
+                                        <div className="card-body">
+                                            <p className="card-text">Total deaths cases</p>
                                             <h5 className="text-danger">{numberWithCommas(currentGlobalReport.deaths)}</h5>
                                         </div>
                                     </div>

@@ -15,11 +15,10 @@ export default class DistrictDetails extends Component {
     }
     render() {
         const { state, districtData } = this.props.selectedStateDistrictReport;
-        // const sortedData = this.sortDataBasedOnConfirmedCase(districtData);
-        const sortedData = districtData;
+        const sortedData = this.sortDataBasedOnConfirmedCase(districtData);
         return (
             <div className="row">
-                <div className="col-lg-11 state-details-section">
+                <div className="col-lg-12">
                     <div className="row">
                         <div className="col-lg-10 text-left"><br />
                             <h5 className="font-weight-bold">Report details for {state}</h5>
@@ -32,21 +31,13 @@ export default class DistrictDetails extends Component {
                                 return (
                                     <div key={key} className="col-sm-4  district-detail">
                                         <div className="row">
-                                            {/* <div className="col-lg-12">
-                                                <b className="text-center">{value.confirmed}</b>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <small>{value.district}</small>
-                                                <SmallTextDangerComponent>{value.delta.confirmed}</SmallTextDangerComponent>
-
-                                            </div> */}
-                                            <div className="col-lg-3 p-0">
-                                                <b className="text-center">{value.confirmed}</b>
-                                            </div>
-                                            <div className="col-lg-6 p-0">
+                                            <div className="col-lg-5 p-0">
                                                 <small>{value.district}</small>
                                             </div>
-                                            <div className="col-lg-3 p-0">
-                                                <SmallTextDangerComponent>{value.delta.confirmed}</SmallTextDangerComponent>
+                                            <div className="col-lg-7 text-right">
+                                                <small> 
+                                                    <SmallTextDangerComponent>{value.delta.confirmed.toLocaleString()}</SmallTextDangerComponent> 
+                                                    <b className="text-center">{value.confirmed.toLocaleString()}</b></small>
                                             </div>
 
                                         </div>

@@ -9,44 +9,51 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-body::-webkit-scrollbar, 
-.table-responsive::-webkit-scrollbar,
-.table-verticalScroll-Ind::-webkit-scrollbar,
-.district-section::-webkit-scrollbar {
+body::-webkit-scrollbar, .table-responsive::-webkit-scrollbar, .table-verticalScroll-Ind::-webkit-scrollbar, .district-section::-webkit-scrollbar {
   width: 0.25em;
 }
 
-body::-webkit-scrollbar-track, 
-.table-responsive::-webkit-scrollbar,
-.table-verticalScroll-Ind::-webkit-scrollbar,
-.district-section::-webkit-scrollbar {
+body::-webkit-scrollbar-track, .table-responsive::-webkit-scrollbar, .table-verticalScroll-Ind::-webkit-scrollbar, .district-section::-webkit-scrollbar {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-body::-webkit-scrollbar-thumb,
-.table-responsive::-webkit-scrollbar,
-.table-verticalScroll-Ind::-webkit-scrollbar,
-.district-section::-webkit-scrollbar {
+body::-webkit-scrollbar-thumb, .table-responsive::-webkit-scrollbar, .table-verticalScroll-Ind::-webkit-scrollbar, .district-section::-webkit-scrollbar {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
 
-.table-fixed          { overflow-y: auto; height: 100px; }
-.table-fixed thead th { position: sticky; top: 0; background-color: #FFFFFF; border-bottom: 1px solid #dee2e6;}
+.table-fixed {
+  overflow-y: auto;
+  height: 100px;
+}
+
+.table-fixed thead th {
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #dee2e6;
+}
 
 /* Just common table stuff. Really. */
-th, td { padding: 8px 16px; }
 
-a.btn.btn-sm.btn-link{
+th, td {
+  padding: 8px 16px;
+}
+
+a.btn.btn-sm.btn-link {
   padding-left: 0px;
 }
 
-@media only screen and (max-width: 768px){
-  .table-verticalScroll-Ind,
-  .mainSection{
+.navbar-light .navbar-nav .nav-link.active {
+  text-shadow: 5px 5px 15px;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 768px) {
+  .table-verticalScroll-Ind, .mainSection {
     margin-top: 0px !important;
   }
-  .state-details-section{
+  .state-details-section {
     padding: 10px 30px !important;
   }
 }

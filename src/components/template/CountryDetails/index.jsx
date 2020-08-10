@@ -7,7 +7,7 @@ import { numberWithCommas } from './../../../config/helpers';
 
 
 export default class CountryDetails extends Component {
-    
+
     render() {
         const countryReport = this.props.countryReport;
         return (
@@ -24,9 +24,9 @@ export default class CountryDetails extends Component {
                     </div>
                     <div className="row">
                         <div className="col-lg-4">
-                            <div class="card text-center border-light">
-                                <div class="card-body">
-                                    <p class="card-text">Total reported cases</p>
+                            <div className="card text-center border-light">
+                                <div className="card-body">
+                                    <p className="card-text">Total reported cases</p>
                                     <h5 className="text-info">
                                         {countryReport.todayCases ?
                                             <SmallTextDangerComponent >{numberWithCommas(countryReport.todayCases)} </SmallTextDangerComponent> : ""
@@ -37,33 +37,33 @@ export default class CountryDetails extends Component {
                             </div>
                         </div>
                         <div className="col-lg-4">
-                            <div class="card text-center border-light">
-                                <div class="card-body">
-                                    <p class="card-text">Total recovered cases</p>
+                            <div className="card text-center border-light">
+                                <div className="card-body">
+                                    <p className="card-text">Total recovered cases</p>
                                     <h5 className="text-success">{numberWithCommas(countryReport.recovered)}</h5>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4">
-                            <div class="card text-center border-light">
-                                <div class="card-body">
-                                    <p class="card-text">Total confirmed cases</p>
+                            <div className="card text-center border-light">
+                                <div className="card-body">
+                                    <p className="card-text">Total confirmed cases</p>
                                     <h5 className="text-active">{numberWithCommas(countryReport.active)}</h5>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4">
-                            <div class="card text-center border-light">
-                                <div class="card-body">
-                                    <p class="card-text">Cases per Million</p>
+                            <div className="card text-center border-light">
+                                <div className="card-body">
+                                    <p className="card-text">Cases per Million</p>
                                     <h5 className="text-info">{numberWithCommas(countryReport.casesPerOneMillion)}</h5>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-4">
-                            <div class="card text-center border-light">
-                                <div class="card-body">
-                                    <p class="card-text">Total deaths cases</p>
+                            <div className="card text-center border-light">
+                                <div className="card-body">
+                                    <p className="card-text">Total deaths cases</p>
                                     <h5 className="text-danger">
                                         {countryReport.todayDeaths ?
                                             <SmallTextDangerComponent >{numberWithCommas(countryReport.todayDeaths)} </SmallTextDangerComponent> : ""
@@ -73,9 +73,9 @@ export default class CountryDetails extends Component {
                             </div>
                         </div>
                         <div className="col-lg-4">
-                            <div class="card text-center border-light">
-                                <div class="card-body">
-                                    <p class="card-text">Deaths per Million</p>
+                            <div className="card text-center border-light">
+                                <div className="card-body">
+                                    <p className="card-text">Deaths per Million</p>
                                     <h5 className="text-danger">{numberWithCommas(countryReport.deathsPerOneMillion)}</h5>
                                 </div>
                             </div>

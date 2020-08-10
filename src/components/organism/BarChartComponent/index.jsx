@@ -14,8 +14,6 @@ export default class BarChartComponent extends Component {
         const globalReport = this.props.globalReport;
         const countriesList = globalReport.map((value,key)=>{ return value.country }).slice(0,10);
         const countriesCount = globalReport.map((value,key)=>{ return value.active }).slice(0,10);
-        console.log(globalReport);
-        console.log(countriesCount);
         const options = {
             chart: {
                 type: 'bar'

@@ -1,5 +1,5 @@
 {
-  "homepage": "http://covid19wr.org",
+  "homepage": "https://covidworldreport.netlify.app",
   "name": "covid-19-status",
   "version": "0.1.0",
   "private": true,

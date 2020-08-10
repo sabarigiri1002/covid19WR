@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
-
+import NavbarItemComponent from '../../atom/NavbarItemComponent'
 export default class NavbarMenu extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
     }
 
     render() {
         return (
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/fullDetailsScreen">Global Report</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/viewIndiaDetailsScreen">India Report</a>
-                    </li>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto">
+                    <NavbarItemComponent to="/fullDetailsScreen">Global Report</NavbarItemComponent>
+                    <NavbarItemComponent to="/viewIndiaDetailsScreen">India Report</NavbarItemComponent>
                 </ul>
                 {/* <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
