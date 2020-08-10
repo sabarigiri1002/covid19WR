@@ -13,7 +13,7 @@ export default class BarChartComponent extends Component {
     render() {
         const globalReport = this.props.globalReport;
         const countriesList = globalReport.map((value,key)=>{ return value.country }).slice(0,10);
-        const countriesCount = globalReport.map((value,key)=>{ return value.active }).slice(0,10);
+        const countriesCount = globalReport.map((value,key)=>{ return value.cases }).slice(0,10);
         const options = {
             chart: {
                 type: 'bar'
