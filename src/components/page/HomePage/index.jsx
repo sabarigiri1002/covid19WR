@@ -23,7 +23,7 @@ export default class HomePage extends Component {
     componentDidMount() {
         apiCalls.getConsolidatedReport()
             .then(currentGlobalReportData => {
-                apiCalls.getTopAffectedCountreyReport()
+                apiCalls.getAllCountreyReport()
                     .then(countryReport => {
                         const IndiaReport = countryReport.filter((value) => value.country === "India");
                         this.setState({
