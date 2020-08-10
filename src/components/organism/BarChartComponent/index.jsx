@@ -67,7 +67,7 @@ export default class BarChartComponent extends Component {
                 enabled: false
             },
             series: [{
-                name: 'Total active cases',
+                name: 'Total reported cases',
                 data: countriesCount,
                 color: '#dc3545',
             }]
