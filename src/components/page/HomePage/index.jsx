@@ -96,7 +96,7 @@ export default class HomePage extends Component {
 
                             </div>
                         </div>
-                        <div className="col-lg-6 col-sm-12 d-sm-none d-md-block">
+                        <div className="col-lg-6 col-sm-12 d-none d-lg-block">
                             {
                                 globalReport.length > 0 ? <BarChartComponent globalReport={globalReport} /> : ""
                             }

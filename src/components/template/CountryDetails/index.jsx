@@ -23,7 +23,7 @@ export default class CountryDetails extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-lg-4">
+                        <div className="col-sm-6 col-md-6 col-lg-4">
                             <div className="card text-center border-light">
                                 <div className="card-body">
                                     <p className="card-text">Total reported cases</p>
@@ -36,7 +36,7 @@ export default class CountryDetails extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4">
+                        <div className="col-sm-6 col-md-6 col-lg-4">
                             <div className="card text-center border-light">
                                 <div className="card-body">
                                     <p className="card-text">Total recovered cases</p>
@@ -44,7 +44,7 @@ export default class CountryDetails extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4">
+                        <div className="col-sm-6 col-md-6 col-lg-4">
                             <div className="card text-center border-light">
                                 <div className="card-body">
                                     <p className="card-text">Total confirmed cases</p>
@@ -52,7 +52,7 @@ export default class CountryDetails extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4">
+                        <div className="col-sm-6 col-md-6 col-lg-4">
                             <div className="card text-center border-light">
                                 <div className="card-body">
                                     <p className="card-text">Cases per Million</p>
@@ -60,7 +60,7 @@ export default class CountryDetails extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4">
+                        <div className="col-sm-6 col-md-6 col-lg-4">
                             <div className="card text-center border-light">
                                 <div className="card-body">
                                     <p className="card-text">Total deaths cases</p>
@@ -72,7 +72,7 @@ export default class CountryDetails extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4">
+                        <div className="col-sm-6 col-md-6 col-lg-4">
                             <div className="card text-center border-light">
                                 <div className="card-body">
                                     <p className="card-text">Deaths per Million</p>

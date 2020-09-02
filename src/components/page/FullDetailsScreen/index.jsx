@@ -17,7 +17,8 @@ export default class FullDetailsScreen extends Component {
             currentAllCountryReport: null,
             countryReport: null,
             searchTest: "",
-            backUpdata: null
+            backUpdata: null,
+            countriesList : null
         };
     }
 
@@ -26,10 +27,15 @@ export default class FullDetailsScreen extends Component {
             .then(currentAllCountryReportData => {
                 this.setState({
                     currentAllCountryReport: currentAllCountryReportData,
-                    backUpdata: currentAllCountryReportData
+                    backUpdata: currentAllCountryReportData,
+                    countriesList : currentAllCountryReportData.map((value)=> value.country)
                 })
                 this.getCountreyReportByName(currentAllCountryReportData[0].country);
             });
+    }
+    changeCountryReportByName(event){
+        let country = event.target.value;
+        this.getCountreyReportByName(country);
     }
     getCountreyReportByName(country) {
         apiCalls.getCountreyReportByName(country)
@@ -40,7 +46,7 @@ export default class FullDetailsScreen extends Component {
             });
     }
     searchFilterData(event) {
-        let searchValue = event.target.value;
+        let searchValue = event.target.value.toLowerCase();
         const { backUpdata } = this.state;
         let filteredData = backUpdata.filter((value) => {
             return value.country.toLowerCase().match(searchValue)
@@ -52,7 +58,7 @@ export default class FullDetailsScreen extends Component {
     }
 
     render() {
-        const { currentAllCountryReport, countryReport, searchTest } = this.state;
+        const { currentAllCountryReport, countryReport, searchTest,countriesList } = this.state;
         return (
             <div className="row">
                 <div className="col-lg-12">
@@ -68,7 +74,7 @@ export default class FullDetailsScreen extends Component {
                         currentAllCountryReport ?
 
                             <div className="row mainSection">
-                                <div className="col-lg-6 table-responsive table-verticalScroll">
+                                <div className="col-lg-6 table-responsive table-verticalScroll d-none d-lg-block">
                                     <div className="col-lg-6 form-group float-right">
                                         <input className="form-control" placeholder="Search by Country" value={searchTest} onChange={this.searchFilterData.bind(this)} />
                                     </div>
@@ -78,7 +84,7 @@ export default class FullDetailsScreen extends Component {
                                                 <th className="text-left">Country</th>
                                                 <th className="text-center">Flag</th>
                                                 <th className="text-right text-danger">
-                                                    (<span class="oi oi-arrow-top small"></span>) Total <span class="oi oi-sort-descending small"></span>
+                                                    (<span className="oi oi-arrow-top small"></span>) Total <span className="oi oi-sort-descending small"></span>
                                                 </th>
                                                 <th className="text-right text-success">
                                                     Recovered
@@ -87,7 +93,7 @@ export default class FullDetailsScreen extends Component {
                                                     Active
                                                 </th>
                                                 <th className="text-right text-dark">
-                                                    (<span class="oi oi-arrow-top small"></span>) Deaths
+                                                    (<span className="oi oi-arrow-top small"></span>) Deaths
                                                 </th>
                                             </tr>
                                         </thead>
@@ -126,6 +132,21 @@ export default class FullDetailsScreen extends Component {
                                         </tbody>
                                     </table>
                                 </div>
+                                <div className="col-lg-6 d-block d-lg-none">
+                                    {
+                                        countriesList &&
+                                        <div className="form-group">
+                                            <select id="countrySelect" className="form-control" onChange={this.changeCountryReportByName.bind(this)}>
+                                                {
+                                                    countriesList.map((country, index) =>
+                                                        <option value={country} key={index}>{country}</option>
+                                                    )
+                                                }
+                                            </select>
+                                        </div>
+                                    }
+
+                                </div>
                                 <div className="col-lg-6">
                                     {
                                         countryReport ?
@@ -135,7 +156,7 @@ export default class FullDetailsScreen extends Component {
                                                         <CountryDetails countryReport={countryReport} />
                                                     </div>
                                                 </div>
-                                                <div className="row d-sm-none d-md-block">
+                                                <div className="row">
                                                     <div className="col-lg-12">
                                                         <LineChartComponent countryName={countryReport.country} />
 
