@@ -4,13 +4,6 @@ import React, { Component } from 'react';
 import NavbarMenu from './../../organism/NavbarMenu';
 
 export default class Navbar extends Component {
-
-    constructor(props) {
-        super(props)
-    }
-
-
-
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">

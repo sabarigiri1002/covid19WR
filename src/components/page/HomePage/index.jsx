@@ -6,7 +6,6 @@ import CountryDetails from '../../template/CountryDetails';
 import { numberWithCommas } from './../../../config/helpers';
 
 import BarChartComponent from './../../organism/BarChartComponent';
-import NavbarItemComponent from './../../atom/NavbarItemComponent'
 
 
 export default class HomePage extends Component {

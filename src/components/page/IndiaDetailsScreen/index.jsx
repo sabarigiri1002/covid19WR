@@ -41,8 +41,9 @@ export default class IndiaDetailsScreen extends Component {
                     })
             });
     }
+    
     searchFilterData(event) {
-        let searchValue = event.target.value;
+        let searchValue = event.target.value.toLowerCase();
         const { backUpdata } = this.state;
         let filteredData = backUpdata.filter((value) => {
             return value.state.toLowerCase().match(searchValue)
@@ -52,11 +53,16 @@ export default class IndiaDetailsScreen extends Component {
             searchTest: searchValue
         })
     }
+    
+    changeStateReportByStateCode(event){
+        let stateCode = event.target.value;
+        this.getStateDetailsReport(stateCode);
+    }
+
     getStateDetailsReport(statecode) {
         let selectedStateDistrictReportData = this.state.allDistrictReport.filter(
             (value) => { return value.statecode === statecode }
         );
-        console.log(selectedStateDistrictReportData)
         this.setState({
             selectedStateDistrictReport: selectedStateDistrictReportData[0]
         });
@@ -64,7 +70,7 @@ export default class IndiaDetailsScreen extends Component {
     }
 
     render() {
-        const { currentAllStateReport, searchTest, selectedStateDistrictReport } = this.state;
+        const { currentAllStateReport, searchTest, selectedStateDistrictReport, backUpdata } = this.state;
         return (
             <div className="row">
                 <div className="col-lg-12">
@@ -80,7 +86,7 @@ export default class IndiaDetailsScreen extends Component {
                         currentAllStateReport ?
 
                             <div className="row">
-                                <div className="col-lg-6 table-responsive table-verticalScroll-Ind">
+                                <div className="col-lg-6 table-responsive table-verticalScroll-Ind d-none d-lg-block">
                                     <div className="col-lg-6 form-group float-right">
                                         <input className="form-control" placeholder="Search by State" value={searchTest} onChange={this.searchFilterData.bind(this)} />
                                     </div>
@@ -89,7 +95,7 @@ export default class IndiaDetailsScreen extends Component {
                                             <tr>
                                                 <th className="text-left">State</th>
                                                 <th className="text-right text-danger">
-                                                    (<span class="oi oi-arrow-top small"></span>) Confirmed <span class="oi oi-sort-descending small"></span>
+                                                    (<span className="oi oi-arrow-top small"></span>) Confirmed <span className="oi oi-sort-descending small"></span>
                                                 </th>
                                                 <th className="text-right text-success">
                                                     Recovered
@@ -98,7 +104,7 @@ export default class IndiaDetailsScreen extends Component {
                                                     Active
                                                 </th>
                                                 <th className="text-right text-dark">
-                                                    (<span class="oi oi-arrow-top small"></span>) Deaths
+                                                    (<span className="oi oi-arrow-top small"></span>) Deaths
                                                 </th>
                                             </tr>
                                         </thead>
@@ -134,6 +140,18 @@ export default class IndiaDetailsScreen extends Component {
                                             }
                                         </tbody>
                                     </table>
+                                </div>
+                                <div className="col-lg-6 d-block d-lg-none">
+                                    <div className="form-group">
+                                        <select className="form-control" name="stateName" id="stateName" 
+                                        onChange={this.changeStateReportByStateCode.bind(this)}>
+                                            {
+                                                backUpdata.map((stateData, key) => {
+                                                    return <option value={stateData.statecode} key={key}>{stateData.state}</option>
+                                                })
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className="col-lg-6">
                                     {

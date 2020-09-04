@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import NavbarItemComponent from '../../atom/NavbarItemComponent'
 export default class NavbarMenu extends Component {
-    constructor(props) {
-        super(props)
-    }
+    
 
     render() {
         return (

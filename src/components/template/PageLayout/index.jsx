@@ -5,9 +5,7 @@ import Navbar from './../../organism/Navbar';
 import './style.css';
 
 export default class PageLayout extends Component {
-    constructor(props){
-        super(props)
-    }
+    
     render() {
         return (
             <div>

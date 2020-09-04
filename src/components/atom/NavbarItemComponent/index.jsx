@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 export class NavbarItemComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
+
 
     render() {
         const { to, children } = this.props;

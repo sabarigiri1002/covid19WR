@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-
 import SmallTextDangerComponent from '../../atom/SmallTextDangerComponent';
-
-import { numberWithCommas } from '../../../config/helpers';
-
 import "./index.css";
 
 
