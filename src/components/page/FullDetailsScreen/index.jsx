@@ -71,8 +71,7 @@ export default class FullDetailsScreen extends Component {
 
                     </div>
                     {
-                        currentAllCountryReport ?
-
+                        currentAllCountryReport &&
                             <div className="row mainSection">
                                 <div className="col-lg-6 table-responsive table-verticalScroll d-none d-lg-block">
                                     <div className="col-lg-6 form-group float-right">
@@ -112,16 +111,16 @@ export default class FullDetailsScreen extends Component {
                                                             </td>
                                                             <td className="text-center"><img src={`${countryInfo.flag}`} alt={`${countryInfo.flag}`} width="20"></img></td>
                                                             <td className="text-right">
-                                                                {todayCases ?
-                                                                    <SmallTextDangerComponent >{numberWithCommas(todayCases)} </SmallTextDangerComponent> : ""
+                                                                {todayCases &&
+                                                                    <SmallTextDangerComponent >{numberWithCommas(todayCases)} </SmallTextDangerComponent> 
                                                                 }
                                                                 {numberWithCommas(cases)}
                                                             </td>
                                                             <td className="text-right">{numberWithCommas(recovered)}</td>
                                                             <td className="text-right">{numberWithCommas(active)}</td>
                                                             <td className="text-right">
-                                                                {todayCases ?
-                                                                    <SmallTextDangerComponent >{numberWithCommas(todayDeaths)} </SmallTextDangerComponent> : ""
+                                                                {todayCases &&
+                                                                    <SmallTextDangerComponent >{numberWithCommas(todayDeaths)} </SmallTextDangerComponent> 
                                                                 }
                                                                 {numberWithCommas(deaths)}
                                                             </td>
@@ -149,7 +148,7 @@ export default class FullDetailsScreen extends Component {
                                 </div>
                                 <div className="col-lg-6">
                                     {
-                                        countryReport ?
+                                        countryReport &&
                                             <React.Fragment>
                                                 <div className="row">
                                                     <div className="col-lg-12">
@@ -163,13 +162,10 @@ export default class FullDetailsScreen extends Component {
                                                     </div>
                                                 </div>
                                             </React.Fragment>
-                                            : ""
                                     }
                                 </div>
-                            </div> : ""
+                            </div> 
                     }
-
-
                 </div>
             </div>
         )

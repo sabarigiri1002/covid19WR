@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 
 
 import apiCalls from '../../../config/apiCalls';
-import CountryDetails from '../../template/CountryDetails';
 import { numberWithCommas } from './../../../config/helpers';
 
+
+import CountryDetails from '../../template/CountryDetails';
 import BarChartComponent from './../../organism/BarChartComponent';
 
 
@@ -89,7 +90,7 @@ export default class HomePage extends Component {
                             <div className="row">
                                 <div className="col-lg-12">
                                     {
-                                        countryReport.country ? <CountryDetails countryReport={countryReport} /> : ""
+                                        countryReport.country && <CountryDetails countryReport={countryReport} />
                                     }
                                 </div>
 
@@ -97,7 +98,7 @@ export default class HomePage extends Component {
                         </div>
                         <div className="col-lg-6 col-sm-12 d-none d-lg-block">
                             {
-                                globalReport.length > 0 ? <BarChartComponent globalReport={globalReport} /> : ""
+                                globalReport.length > 0 && <BarChartComponent globalReport={globalReport} /> 
                             }
                         </div>
                     </div>

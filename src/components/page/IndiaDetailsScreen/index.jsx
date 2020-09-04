@@ -83,7 +83,7 @@ export default class IndiaDetailsScreen extends Component {
 
                     </div>
                     {
-                        currentAllStateReport ?
+                        currentAllStateReport &&
 
                             <div className="row">
                                 <div className="col-lg-6 table-responsive table-verticalScroll-Ind d-none d-lg-block">
@@ -121,16 +121,16 @@ export default class IndiaDetailsScreen extends Component {
                                                                 </button>
                                                             </td>
                                                             <td className="text-right">
-                                                                {deltaconfirmed ?
-                                                                    <SmallTextDangerComponent >{numberWithCommas(deltaconfirmed)} </SmallTextDangerComponent> : ""
+                                                                {deltaconfirmed &&
+                                                                    <SmallTextDangerComponent >{numberWithCommas(deltaconfirmed)} </SmallTextDangerComponent>
                                                                 }
                                                                 {numberWithCommas(confirmed)}
                                                             </td>
                                                             <td className="text-right">{numberWithCommas(recovered)}</td>
                                                             <td className="text-right">{numberWithCommas(active)}</td>
                                                             <td className="text-right">
-                                                                {deltadeaths ?
-                                                                    <SmallTextDangerComponent >{numberWithCommas(deltadeaths)} </SmallTextDangerComponent> : ""
+                                                                {deltadeaths &&
+                                                                    <SmallTextDangerComponent >{numberWithCommas(deltadeaths)} </SmallTextDangerComponent>
                                                                 }
                                                                 {numberWithCommas(deaths)}
                                                             </td>
@@ -155,12 +155,12 @@ export default class IndiaDetailsScreen extends Component {
                                 </div>
                                 <div className="col-lg-6">
                                     {
-                                        selectedStateDistrictReport ?
+                                        selectedStateDistrictReport &&
                                             <DistrictDetails selectedStateDistrictReport={selectedStateDistrictReport} />
-                                            : ""
+                                        
                                     }
                                 </div>
-                            </div> : ""
+                            </div>
                     }
 
 
