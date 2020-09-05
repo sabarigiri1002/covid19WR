@@ -43,7 +43,7 @@ export default class HomePage extends Component {
                 <div className="col-lg-12">
                     <div className="row">
                         <div className="col-lg-6 col-sm-12 text-left">
-                            <h5>Global report summary</h5>
+                            <h5>World Wide summary</h5>
                         </div>
                         <div className="col-lg-6 col-sm-12 text-right">
                             <a href="/fullDetailsScreen">View Details</a>

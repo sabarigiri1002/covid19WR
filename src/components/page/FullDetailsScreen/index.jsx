@@ -66,7 +66,7 @@ export default class FullDetailsScreen extends Component {
                         <div className="col-lg-4">
                             <a href="/" className="btn btn-sm btn-link"> Back</a>
                             <br />
-                            <h5>Global Report</h5>
+                            <h5>Global Status</h5>
                         </div>
 
                     </div>

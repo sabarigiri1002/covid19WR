@@ -15,7 +15,7 @@ export default class CountryDetails extends Component {
                 <div className="col-lg-12">
                     <div className="row">
                         <div className="col-lg-10 text-left">
-                            <h5>Report details for {countryReport.country}  &nbsp;
+                            <h5>{countryReport.country} &nbsp;
                             {
                                     countryReport.countryInfo ?
                                         <img src={`${countryReport.countryInfo.flag}`} alt={countryReport.country} width="30"></img> : ""

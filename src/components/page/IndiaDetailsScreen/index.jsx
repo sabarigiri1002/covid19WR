@@ -78,7 +78,7 @@ export default class IndiaDetailsScreen extends Component {
                         <div className="col-lg-4">
                             <a href="/" className="btn btn-sm btn-link"> Back</a>
                             <br />
-                            <h5>State Report</h5>
+                            <h5>State Status</h5>
                         </div>
 
                     </div>

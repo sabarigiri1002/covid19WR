@@ -7,8 +7,8 @@ export default class NavbarMenu extends Component {
         return (
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
-                    <NavbarItemComponent to="/fullDetailsScreen">Global Report</NavbarItemComponent>
-                    <NavbarItemComponent to="/viewIndiaDetailsScreen">India Report</NavbarItemComponent>
+                    <NavbarItemComponent to="/fullDetailsScreen">World status</NavbarItemComponent>
+                    <NavbarItemComponent to="/viewIndiaDetailsScreen">India status</NavbarItemComponent>
                 </ul>
                 {/* <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
